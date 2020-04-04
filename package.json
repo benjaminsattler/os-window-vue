@@ -1,0 +1,72 @@
+{
+  "name": "os-window-vue",
+  "version": "0.0.0",
+  "description": "Integrates the os-window custom component into vue.",
+  "main": "main.js",
+  "scripts": {
+    "lint": "vue-cli-service lint --ext=.js,.vue main.js dev.js lib test",
+    "serve": "vue-cli-service serve dev.js",
+    "test": "./test/runTests.sh",
+    "release": "np"
+  },
+  "keywords": [
+    "window",
+    "chrome",
+    "decoration",
+    "border",
+    "os",
+    "operating system",
+    "mac",
+    "macos",
+    "apple",
+    "os-window",
+    "vue",
+    "vuejs",
+    "component"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benjaminsattler/os-window-vue.git"
+  },
+  "bugs": {
+    "url": "https://github.com/benjaminsattler/os-window-vue/issues"
+  },
+  "author": {
+    "name": "Benjamin Sattler",
+    "email": "bsattler.inbox@gmail.com"
+  },
+  "homepage": "https://github.com/benjaminsattler/os-window-vue",
+  "license": "MIT",
+  "peerDependencies": {
+    "os-window": "^0.2.0",
+    "vue": "^2.0.0"
+  },
+  "files": [
+    "lib",
+    "main.js"
+  ],
+  "devDependencies": {
+    "@vue/cli": "^4.3.1",
+    "@vue/cli-plugin-eslint": "~4.3.0",
+    "@vue/cli-service": "~4.3.0",
+    "@vue/eslint-config-airbnb": "^5.0.2",
+    "@vue/test-utils": "^1.0.0-beta.33",
+    "babel-eslint": "^10.1.0",
+    "browserify": "^16.5.1",
+    "chai": "^4.2.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "husky": "^4.2.5",
+    "mocha": "^7.1.1",
+    "mocha-chrome": "^2.2.0",
+    "np": "^6.2.1",
+    "npm-install-peers": "^1.2.1",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "directories": {
+    "lib": "./lib",
+    "doc": "./doc",
+    "test": "./test"
+  }
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Vue Tests</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
+  </head>
+  <body>
+    <div id="mocha"></div>
+
+    <script src="../node_modules/mocha/mocha.js"></script>
+    <script src="../node_modules/chai/chai.js"></script>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/@vue/test-utils/dist/vue-test-utils.umd.js"></script>
+
+
+    <script class="mocha-init">
+      mocha.setup('bdd');
+      mocha.checkLeaks();
+    </script>
+    <!-- Start SUT -->
+    <script src="../dist/VueOsWindowPlugin.umd.js"></script>
+    <!-- End SUT -->
+
+    <!-- START Test files -->
+    <script type="module" src="initialization.spec.js"></script>
+    <script type="module" src="prop.spec.js"></script>
+    <script type="module" src="event.spec.js"></script>
+    <!-- END Test files -->
+
+    <script type="module" class="mocha-exec">
+      mocha.run();
+    </script>
+    <div id="app"></div>
+  </body>
+</html>
