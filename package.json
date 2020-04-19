@@ -1,6 +1,6 @@
 {
   "name": "os-window-vue",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Integrates the os-window custom component into vue.",
   "main": "main.js",
   "scripts": {
