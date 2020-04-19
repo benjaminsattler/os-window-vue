@@ -13,20 +13,17 @@ Run the following command in your command line to add both os-window and os-wind
 > yarn add os-window os-window-vue
 ```
 
-#### Register the Vue component
+#### Including the base library
 
-When installing with a node package manager, then after you obtained os-window-vue, you need to register it with Vue like this:
+In your application entrypoint you need to include the library `os-window`. Afterwards you can use the vue component in your application.
 
 ```javascript
 import 'os-window';
-import { install } from 'os-window-vue';
-
-Vue.use(install);
 ```
 
 ### Inclusion in the Browser
 
-You can also directly include the JavaScript module in the browser. In that case you don't have to register it to Vue, as this will be done automatically when you include the browser entrypoint `browser.js`:
+You can also directly include the JavaScript module in the browser with the `browser.js` entrypoint:
 
 ```html
 <!DOCTYPE html>
