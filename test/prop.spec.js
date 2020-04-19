@@ -1,4 +1,4 @@
-const VueOsWindow = VueOsWindowPlugin.default;
+const { OsWindowVue } = window;
 const { mount } = VueTestUtils;
 
 describe('properties', () => {
@@ -9,7 +9,7 @@ describe('properties', () => {
   describe('windowTitle', () => {
     it('reflects change to os-window', async () => {
       const expectedPropValue = 'expected prop value';
-      sut = mount(VueOsWindow);
+      sut = mount(OsWindowVue);
       const osWindowInstance = sut.get('os-window').element;
 
       sut.setProps({ windowTitle: expectedPropValue });
@@ -25,7 +25,7 @@ describe('properties', () => {
     const osWindow = customElements.get('os-window');
     osWindow.supportedWindowStates.forEach((expectedPropValue) => {
       it(`reflects change to ${expectedPropValue} to os-window`, async () => {
-        sut = mount(VueOsWindow);
+        sut = mount(OsWindowVue);
         const osWindowInstance = sut.get('os-window').element;
 
         sut.setProps({ windowState: expectedPropValue });
@@ -42,7 +42,7 @@ describe('properties', () => {
     const osWindow = customElements.get('os-window');
     osWindow.supportedThemes.forEach((expectedPropValue) => {
       it(`reflects change to ${expectedPropValue} to os-window`, async () => {
-        sut = mount(VueOsWindow);
+        sut = mount(OsWindowVue);
         const osWindowInstance = sut.get('os-window').element;
 
         sut.setProps({ theme: expectedPropValue });
@@ -59,7 +59,7 @@ describe('properties', () => {
     const osWindow = customElements.get('os-window');
     osWindow.supportedOsThemes.forEach((expectedPropValue) => {
       it(`reflects change to ${expectedPropValue} to os-window`, async () => {
-        sut = mount(VueOsWindow);
+        sut = mount(OsWindowVue);
         const osWindowInstance = sut.get('os-window').element;
 
         sut.setProps({ osTheme: expectedPropValue });
@@ -75,7 +75,7 @@ describe('properties', () => {
   describe('hover', () => {
     [true, false].forEach((expectedPropValue) => {
       it(`reflects change to ${expectedPropValue} to os-window`, async () => {
-        sut = mount(VueOsWindow);
+        sut = mount(OsWindowVue);
         const osWindowInstance = sut.get('os-window').element;
 
         sut.setProps({ hover: expectedPropValue });
@@ -91,7 +91,7 @@ describe('properties', () => {
   describe('interactive', () => {
     [true, false].forEach((expectedPropValue) => {
       it(`reflects change to ${expectedPropValue} to os-window`, async () => {
-        sut = mount(VueOsWindow);
+        sut = mount(OsWindowVue);
         const osWindowInstance = sut.get('os-window').element;
 
         sut.setProps({ interactive: expectedPropValue });

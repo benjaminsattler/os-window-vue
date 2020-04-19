@@ -11,16 +11,18 @@
 
     <script src="../node_modules/mocha/mocha.js"></script>
     <script src="../node_modules/chai/chai.js"></script>
-    <script src="../node_modules/vue/dist/vue.js"></script>
-    <script src="../node_modules/@vue/test-utils/dist/vue-test-utils.umd.js"></script>
+    <script type="module" src="../node_modules/vue/dist/vue.js"></script>
+    <script type="module" src="../node_modules/vue-template-compiler/browser.js"></script>
+    <script type="module" src="../node_modules/@vue/test-utils/dist/vue-test-utils.umd.js"></script>
+    <script type="module" src="../node_modules/os-window/main.js"></script>
 
 
-    <script class="mocha-init">
+    <script type="module" class="mocha-init">
       mocha.setup('bdd');
       mocha.checkLeaks();
     </script>
     <!-- Start SUT -->
-    <script src="../dist/VueOsWindowPlugin.umd.js"></script>
+    <script type="module" src="../browser.js"></script>
     <!-- End SUT -->
 
     <!-- START Test files -->

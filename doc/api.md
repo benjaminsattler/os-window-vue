@@ -18,12 +18,12 @@ You can enable mouse hover support by setting the `hover` property to `true`, as
 </template>
 
 <script>
-import VueOsWindow from 'os-window-vue';
+import OsWindowVue from 'os-window-vue';
 
 export default {
     name: 'App',
     components: {
-        VueOsWindow,
+        OsWindowVue,
     },
 };
 ```
@@ -38,12 +38,12 @@ If you want to listen to changes to the `hover` property of the underlying `os-w
 </template>
 
 <script>
-import VueOsWindow from 'os-window-vue';
+import OsWindowVue from 'os-window-vue';
 
 export default {
     name: 'App',
     components: {
-        VueOsWindow,
+        OsWindowVue,
     },
     methods: {
         onHoverChange(e) {
@@ -66,12 +66,12 @@ You can enable interaction support by setting the `interactive` property to `tru
 </template>
 
 <script>
-import VueOsWindow from 'os-window-vue';
+import OsWindowVue from 'os-window-vue';
 
 export default {
     name: 'App',
     components: {
-        VueOsWindow,
+        OsWindowVue,
     },
 };
 ```
@@ -86,12 +86,12 @@ If you want to listen to changes to the `interactive` property of the underlying
 </template>
 
 <script>
-import VueOsWindow from 'os-window-vue';
+import OsWindowVue from 'os-window-vue';
 
 export default {
     name: 'App',
     components: {
-        VueOsWindow,
+        OsWindowVue,
     },
     methods: {
         onInteractiveChange(e) {
@@ -114,12 +114,12 @@ You can change the window state by setting the `window-state` property to all va
 </template>
 
 <script>
-import VueOsWindow from 'os-window-vue';
+import OsWindowVue from 'os-window-vue';
 
 export default {
     name: 'App',
     components: {
-        VueOsWindow,
+        OsWindowVue,
     },
 };
 ```
@@ -134,12 +134,12 @@ If you want to listen to changes to the `window-state` property of the underlyin
 </template>
 
 <script>
-import VueOsWindow from 'os-window-vue';
+import OsWindowVue from 'os-window-vue';
 
 export default {
     name: 'App',
     components: {
-        VueOsWindow,
+        OsWindowVue,
     },
     methods: {
         onWindowStateChange(e) {
@@ -162,12 +162,12 @@ You can change the window title by setting the `window-title` property, as shown
 </template>
 
 <script>
-import VueOsWindow from 'os-window-vue';
+import OsWindowVue from 'os-window-vue';
 
 export default {
     name: 'App',
     components: {
-        VueOsWindow,
+        OsWindowVue,
     },
 };
 ```
@@ -182,12 +182,12 @@ If you want to listen to changes to the `window-title` property of the underlyin
 </template>
 
 <script>
-import VueOsWindow from 'os-window-vue';
+import OsWindowVue from 'os-window-vue';
 
 export default {
     name: 'App',
     components: {
-        VueOsWindow,
+        OsWindowVue,
     },
     methods: {
         onWindowTitleChange(e) {
@@ -210,12 +210,12 @@ You can change the operating system theme of the window, as shown in the code ex
 </template>
 
 <script>
-import VueOsWindow from 'os-window-vue';
+import OsWindowVue from 'os-window-vue';
 
 export default {
     name: 'App',
     components: {
-        VueOsWindow,
+        OsWindowVue,
     },
 };
 ```
@@ -230,12 +230,12 @@ If you want to listen to changes to the `os-theme` property of the underlying `o
 </template>
 
 <script>
-import VueOsWindow from 'os-window-vue';
+import OsWindowVue from 'os-window-vue';
 
 export default {
     name: 'App',
     components: {
-        VueOsWindow,
+        OsWindowVue,
     },
     methods: {
         onOsThemeChange(e) {
@@ -258,12 +258,12 @@ You can change the theme of the window, as shown in the code example below:
 </template>
 
 <script>
-import VueOsWindow from 'os-window-vue';
+import OsWindowVue from 'os-window-vue';
 
 export default {
     name: 'App',
     components: {
-        VueOsWindow,
+        OsWindowVue,
     },
 };
 ```
@@ -278,12 +278,12 @@ If you want to listen to changes to the `theme` property of the underlying `os-w
 </template>
 
 <script>
-import VueOsWindow from 'os-window-vue';
+import OsWindowVue from 'os-window-vue';
 
 export default {
     name: 'App',
     components: {
-        VueOsWindow,
+        OsWindowVue,
     },
     methods: {
         onThemeChange(e) {

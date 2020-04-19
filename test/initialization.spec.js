@@ -1,4 +1,4 @@
-const VueOsWindow = VueOsWindowPlugin.default;
+const { OsWindowVue } = window;
 const { mount } = VueTestUtils;
 
 describe('initialization', () => {
@@ -10,7 +10,7 @@ describe('initialization', () => {
     describe('when set', () => {
       it('initialises correctly', () => {
         const expectedPropValue = 'expected prop value';
-        sut = mount(VueOsWindow, {
+        sut = mount(OsWindowVue, {
           propsData: {
             windowTitle: expectedPropValue,
           },
@@ -25,7 +25,7 @@ describe('initialization', () => {
 
     describe('when unset', () => {
       it('initialises correctly', () => {
-        sut = mount(VueOsWindow);
+        sut = mount(OsWindowVue);
 
         const osWindow = customElements.get('os-window');
         chai.expect(sut.vm.windowTitle).to.equal(osWindow.defaultWindowTitle);
@@ -37,7 +37,7 @@ describe('initialization', () => {
     describe('when set', () => {
       it('initialises correctly', () => {
         const expectedPropValue = 'minimized';
-        sut = mount(VueOsWindow, {
+        sut = mount(OsWindowVue, {
           propsData: {
             windowState: expectedPropValue,
           },
@@ -52,7 +52,7 @@ describe('initialization', () => {
 
     describe('when unset', () => {
       it('initialises correctly', () => {
-        sut = mount(VueOsWindow);
+        sut = mount(OsWindowVue);
 
         const osWindow = customElements.get('os-window');
         chai.expect(sut.vm.windowState).to.equal(osWindow.defaultWindowState);
@@ -64,7 +64,7 @@ describe('initialization', () => {
     describe('when set', () => {
       it('initialises correctly', () => {
         const expectedPropValue = 'dark';
-        sut = mount(VueOsWindow, {
+        sut = mount(OsWindowVue, {
           propsData: {
             theme: expectedPropValue,
           },
@@ -79,7 +79,7 @@ describe('initialization', () => {
 
     describe('when unset', () => {
       it('initialises correctly', () => {
-        sut = mount(VueOsWindow);
+        sut = mount(OsWindowVue);
 
         const osWindow = customElements.get('os-window');
         chai.expect(sut.vm.theme).to.equal(osWindow.defaultTheme);
@@ -91,7 +91,7 @@ describe('initialization', () => {
     describe('when set', () => {
       it('initialises correctly', () => {
         const expectedPropValue = 'mac';
-        sut = mount(VueOsWindow, {
+        sut = mount(OsWindowVue, {
           propsData: {
             osTheme: expectedPropValue,
           },
@@ -106,7 +106,7 @@ describe('initialization', () => {
 
     describe('when unset', () => {
       it('initialises correctly', () => {
-        sut = mount(VueOsWindow);
+        sut = mount(OsWindowVue);
 
         const osWindow = customElements.get('os-window');
         chai.expect(sut.vm.osTheme).to.equal(osWindow.defaultOsTheme);
@@ -118,7 +118,7 @@ describe('initialization', () => {
     describe('when set', () => {
       it('initialises correctly', () => {
         const expectedPropValue = true;
-        sut = mount(VueOsWindow, {
+        sut = mount(OsWindowVue, {
           propsData: {
             hover: expectedPropValue,
           },
@@ -133,7 +133,7 @@ describe('initialization', () => {
 
     describe('when unset', () => {
       it('initialises correctly', () => {
-        sut = mount(VueOsWindow);
+        sut = mount(OsWindowVue);
 
         const osWindowInstance = sut.get('os-window').element;
 
@@ -147,7 +147,7 @@ describe('initialization', () => {
     describe('when set', () => {
       it('initialises correctly', () => {
         const expectedPropValue = true;
-        sut = mount(VueOsWindow, {
+        sut = mount(OsWindowVue, {
           propsData: {
             interactive: expectedPropValue,
           },
@@ -162,7 +162,7 @@ describe('initialization', () => {
 
     describe('when unset', () => {
       it('initialises correctly', () => {
-        sut = mount(VueOsWindow);
+        sut = mount(OsWindowVue);
 
         const osWindowInstance = sut.get('os-window').element;
         chai.expect(sut.vm.interactive).to.equal(false);

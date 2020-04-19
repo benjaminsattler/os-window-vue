@@ -1,4 +1,4 @@
-const VueOsWindow = VueOsWindowPlugin.default;
+const { OsWindowVue } = window;
 const { mount } = VueTestUtils;
 
 describe('events', () => {
@@ -9,7 +9,7 @@ describe('events', () => {
 
   describe('hover-change', () => {
     it('fires when os-window hover changes', () => {
-      sut = mount(VueOsWindow, {});
+      sut = mount(OsWindowVue, {});
 
       const osWindowInstance = sut.get('os-window').element;
 
@@ -18,7 +18,7 @@ describe('events', () => {
     });
 
     it('fires when hover data changes', async () => {
-      sut = mount(VueOsWindow, {});
+      sut = mount(OsWindowVue, {});
 
       sut.setProps({ hover: true });
       await Vue.nextTick();
@@ -26,7 +26,7 @@ describe('events', () => {
     });
 
     it('has correct event details', async () => {
-      sut = mount(VueOsWindow, {});
+      sut = mount(OsWindowVue, {});
 
       sut.setProps({ hover: true });
       await Vue.nextTick();
@@ -42,7 +42,7 @@ describe('events', () => {
 
   describe('interactive-change', () => {
     it('fires when os-window interactive changes', () => {
-      sut = mount(VueOsWindow, {});
+      sut = mount(OsWindowVue, {});
 
       const osWindowInstance = sut.get('os-window').element;
 
@@ -51,7 +51,7 @@ describe('events', () => {
     });
 
     it('fires when interactive data changes', async () => {
-      sut = mount(VueOsWindow, {});
+      sut = mount(OsWindowVue, {});
 
       sut.setProps({ interactive: true });
       await Vue.nextTick();
@@ -59,7 +59,7 @@ describe('events', () => {
     });
 
     it('has correct event details', async () => {
-      sut = mount(VueOsWindow, {});
+      sut = mount(OsWindowVue, {});
 
       sut.setProps({ interactive: true });
       await Vue.nextTick();
@@ -75,7 +75,7 @@ describe('events', () => {
 
   describe('theme-change', () => {
     it('fires when os-window theme changes', () => {
-      sut = mount(VueOsWindow, {});
+      sut = mount(OsWindowVue, {});
 
       const osWindowInstance = sut.get('os-window').element;
 
@@ -84,7 +84,7 @@ describe('events', () => {
     });
 
     it('fires when theme data changes', async () => {
-      sut = mount(VueOsWindow, {});
+      sut = mount(OsWindowVue, {});
 
       sut.setProps({ theme: 'dark' });
       await Vue.nextTick();
@@ -92,7 +92,7 @@ describe('events', () => {
     });
 
     it('has correct event details', async () => {
-      sut = mount(VueOsWindow, {});
+      sut = mount(OsWindowVue, {});
 
       sut.setProps({ theme: 'dark' });
       await Vue.nextTick();
@@ -108,7 +108,7 @@ describe('events', () => {
 
   describe('os-theme-change', () => {
     it('fires when os-window osTheme changes', () => {
-      sut = mount(VueOsWindow, {});
+      sut = mount(OsWindowVue, {});
 
       const osWindowInstance = sut.get('os-window').element;
 
@@ -117,7 +117,7 @@ describe('events', () => {
     });
 
     it('fires when osTheme data changes', async () => {
-      sut = mount(VueOsWindow, {});
+      sut = mount(OsWindowVue, {});
 
       sut.setProps({ osTheme: 'mac' });
       await Vue.nextTick();
@@ -125,7 +125,7 @@ describe('events', () => {
     });
 
     it('has correct event details', async () => {
-      sut = mount(VueOsWindow, {});
+      sut = mount(OsWindowVue, {});
 
       sut.setProps({ osTheme: 'mac' });
       await Vue.nextTick();
@@ -139,7 +139,7 @@ describe('events', () => {
 
   describe('window-state', () => {
     it('fires when os-window windowState changes', () => {
-      sut = mount(VueOsWindow, {});
+      sut = mount(OsWindowVue, {});
 
       const osWindowInstance = sut.get('os-window').element;
 
@@ -148,7 +148,7 @@ describe('events', () => {
     });
 
     it('fires when os-window windowState data changes', async () => {
-      sut = mount(VueOsWindow, {});
+      sut = mount(OsWindowVue, {});
 
       sut.setProps({ windowState: 'minimized' });
       await Vue.nextTick();
@@ -156,7 +156,7 @@ describe('events', () => {
     });
 
     it('has correct event details', async () => {
-      sut = mount(VueOsWindow, {});
+      sut = mount(OsWindowVue, {});
 
       sut.setProps({ windowState: 'maximized' });
       await Vue.nextTick();
@@ -172,7 +172,7 @@ describe('events', () => {
 
   describe('window-title', () => {
     it('fires when os-window windowTitle changes', () => {
-      sut = mount(VueOsWindow, {});
+      sut = mount(OsWindowVue, {});
 
       const osWindowInstance = sut.get('os-window').element;
 
@@ -181,7 +181,7 @@ describe('events', () => {
     });
 
     it('fires when os-window windowTitle data changes', async () => {
-      sut = mount(VueOsWindow, {});
+      sut = mount(OsWindowVue, {});
 
       sut.setProps({ windowTitle: 'new window title' });
       await Vue.nextTick();
@@ -189,7 +189,7 @@ describe('events', () => {
     });
 
     it('has correct event details', async () => {
-      sut = mount(VueOsWindow, {});
+      sut = mount(OsWindowVue, {});
 
       const oldWindowTitle = 'old window title';
       const newWindowTitle = 'new window title';

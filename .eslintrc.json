@@ -18,7 +18,6 @@
         "before": true,
         "after": true,
         "VueTestUtils": true,
-        "VueOsWindowPlugin": true,
         "Vue": true
     },
     "parserOptions": {
