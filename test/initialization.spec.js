@@ -170,4 +170,16 @@ describe('initialization', () => {
       });
     });
   });
+
+  describe('window contents', () => {
+    it('is displayed in the window', () => {
+      const expected = '<p>hello world</p>';
+      sut = mount(OsWindowVue, {
+        slots: {
+          default: expected,
+        },
+      });
+      chai.expect(sut.html()).to.contain(expected);
+    });
+  });
 });

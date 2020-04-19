@@ -8,8 +8,14 @@
   <body>
     <div id="app">
       <os-window-vue
-        window-title="my window title"
+        :window-title="windowTitle"
+        :window-state="windowState"
+        :hover="hover ? 'hover' : false"
+        :interactive="interactive ? 'interactive' : false"
+        :theme="theme"
+        :os-theme="osTheme"
       >
+        <img src="http://www.randomkittengenerator.com/cats/rotator.php">
       </os-window-vue>
     </div>
     <script type="module" src="../node_modules/vue/dist/vue.js"></script>
@@ -19,6 +25,14 @@
       new Vue({
         components: {
           osWindowVue: window.OsWindowVue,
+        },
+        data: {
+          windowTitle: 'my window title',
+          hover: true,
+          interactive: true,
+          osTheme: 'mac',
+          theme: 'dark',
+          windowState: 'maximized'
         },
         el: "#app",
       });
