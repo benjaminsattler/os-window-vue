@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "vue-cli-service lint browser.js main.js lib test",
     "dev": "python -m SimpleHTTPServer 8000",
-    "test": "./test/runTests.sh",
+    "test": "./test/runner.js",
     "release": "np"
   },
   "keywords": [
@@ -53,14 +53,16 @@
     "@vue/eslint-config-airbnb": "^5.0.2",
     "@vue/test-utils": "^1.0.0-beta.33",
     "chai": "^4.2.0",
+    "connect": "^3.7.0",
     "eslint": "^6.7.2",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-vue": "^6.2.2",
     "husky": "^4.2.5",
     "mocha": "^7.1.1",
-    "mocha-chrome": "^2.2.0",
-    "np": "^6.2.1",
+    "np": "^5.2.1",
     "npm-install-peers": "^1.2.1",
+    "puppeteer": "^3.0.0",
+    "serve-static": "^1.14.1",
     "vue-template-compiler": "^2.6.11"
   },
   "directories": {

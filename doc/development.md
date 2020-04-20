@@ -36,8 +36,6 @@ Now you can point your web browser at `http://localhost:8080/` and see the os-wi
 
 In order to run the tests during development, simply type the following command in your console:
 
-> **Python 2.x** needs to be available during testing because it's being used to start a simple web server used during development and for running the tests.
-
 ```shell
 > yarn test
 ```
