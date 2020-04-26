@@ -78,5 +78,17 @@ This example creates a non-interactive window with light macos theme
   };
 </script>
 ```
+### Use the CDN
+This project is also published to the CDN unpkg, which enables you to skip any local module installation when including this module in your webpage. Don't forget to also include `os-window`, which is also provided by unpkg:
+
+```html
+<!-- Include specific version (recommended) -->
+<script type="module" src="https://unpkg.com/os-window@0.2.2"></script>
+<script type="module" src="https://unpkg.com/os-window-vue@0.1.2/browser.js"></script>
+
+<!-- Include latest version (not recommended) -->
+<script type="module" src="https://unpkg.com/os-window"></script>
+<script type="module" src="https://unpkg.com/os-window-vue/browser.js"></script>
+```
 
 [os-window]:https://github.com/benjaminsattler/os-window

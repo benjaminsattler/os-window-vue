@@ -62,7 +62,23 @@ You can also directly include the JavaScript module in the browser with the `bro
 </html>
 ```
 
+### Use the CDN
+This project is also published to the CDN unpkg, which enables you to skip any local module installation when including this module in your webpage. Don't forget to also include `os-window`, which is also provided by unpkg:
+
+```html
+<!-- Include specific version (recommended) -->
+<script type="module" src="https://unpkg.com/os-window@0.2.2"></script>
+<script type="module" src="https://unpkg.com/os-window-vue@0.1.2/browser.js"></script>
+
+<!-- Include latest version (not recommended) -->
+<script type="module" src="https://unpkg.com/os-window"></script>
+<script type="module" src="https://unpkg.com/os-window-vue/browser.js"></script>
+```
+
 For more information have a look at the [Installation Guide](./doc/installation.md) or the detailled [documentation](./doc/index.md).
+
+## Demo
+Try the latest version of os-window-vue online at [https://bit.ly/2xXWUYg](https://bit.ly/2xXWUYg)!
 
 ## Examples
 
