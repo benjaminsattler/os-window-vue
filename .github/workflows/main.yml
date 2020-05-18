@@ -15,11 +15,21 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     env:
-      PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome
+      BROWSER: ${{ matrix.browser }}
+      ACTIONS_RUNNER_DEBUG: $ {{ secrets.ACTIONS_RUNNER_DEBUG }}
+      ACTIONS_STEP_DEBUG: $ {{ secrets.ACTIONS_STEP_DEBUG }}
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
+        browser: [chromium,firefox,webkit]
+        os: [ubuntu-18.04,windows-2019,macos-10.15]
+        exclude:
+          - browser: webkit
+            os: ubuntu-18.04
+          - browser: webkit
+            os: windows-2019
         os-window: [0.2.0,0.2.1,0.2.2]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
