@@ -7,7 +7,7 @@
     "lint": "vue-cli-service lint browser.js main.js lib test",
     "dev": "python -m SimpleHTTPServer 8000",
     "test": "node ./test/runner.js",
-    "release": "np"
+    "release": "npm login && np"
   },
   "keywords": [
     "window",
