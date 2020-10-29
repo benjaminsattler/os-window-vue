@@ -15,23 +15,17 @@ const server = http.createServer(app).listen(port);
   const browser = await playwright[product].launch();
   const context = await browser.newContext();
   const page = await context.newPage();
-  let exitCode = 0;
   page.on('console', async (msg) => {
     const args = await Promise.all(msg.args().map((arg) => arg.jsonValue()));
     // eslint-disable-next-line no-console
     console.log(...args);
-    if (/%d failing/.test(msg.text())) {
-      exitCode = 255;
-    }
   });
 
-  const finished = new Promise((resolve) => {
-    page.exposeFunction('mochaFinished', async () => {
+  new Promise((resolve) => {
+    page.exposeFunction('mochaFinished', async (arg) => {
       await browser.close();
-      await server.close();
-      resolve();
+      server.close();
+      resolve(arg);
     }).then(() => page.goto(`http://localhost:${port}/test/`));
-  });
-  await finished;
-  process.exit(exitCode);
+  }).then((failures) => process.exit(failures ? 1 : 0));
 })();
