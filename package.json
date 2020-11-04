@@ -4,7 +4,7 @@
   "description": "Integrates the os-window custom component into vue.",
   "main": "main.js",
   "scripts": {
-    "lint": "vue-cli-service lint browser.js main.js lib test",
+    "lint": "vue-cli-service lint --no-fix browser.js main.js lib test",
     "dev": "python -m SimpleHTTPServer 8000",
     "test": "node ./test/runner.js",
     "release": "npm login && np"
