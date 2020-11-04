@@ -21,6 +21,7 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ${{ matrix.os }}
     strategy:
+      max-parallel: 4
       fail-fast: false
       matrix:
         browser: [chromium,firefox,webkit]
@@ -36,6 +37,8 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+
+    - uses: c-hive/gha-yarn-cache@v1
 
     - name: Install
       run: yarn
