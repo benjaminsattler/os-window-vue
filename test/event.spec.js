@@ -119,14 +119,16 @@ describe('events', () => {
       });
     });
 
-    it('fires when osTheme data changes', async () => {
-      sut = mount(OsWindowVue, {});
-
-      const supported = customElements.get('os-window').supportedOsThemes;
-      supported.forEach(async (osTheme, index) => {
+    customElements.get('os-window').supportedOsThemes.forEach(async (osTheme) => {
+      it(`fires when osTheme data changes to ${osTheme}`, async () => {
+        sut = mount(OsWindowVue, {
+          propsData: {
+            osTheme: customElements.get('os-window').supportedOsThemes.find((s) => s !== osTheme),
+          },
+        });
         sut.setProps({ osTheme });
         await Vue.nextTick();
-        chai.expect(sut.emitted()['os-theme-change'].length).to.equal(index + 1);
+        chai.expect(sut.emitted()['os-theme-change'].length).to.equal(1);
       });
     });
 
