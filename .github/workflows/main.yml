@@ -30,7 +30,7 @@ jobs:
             os: ubuntu-18.04
           - browser: webkit
             os: windows-2019
-        os-window: [0.2.0,0.2.1,0.2.2,0.2.3,0.2.4]
+        os-window: [0.2.0,0.2.1,0.2.2,0.2.3,0.2.4,0.3.0]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
