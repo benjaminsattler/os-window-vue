@@ -106,44 +106,49 @@ describe('events', () => {
     });
   });
 
-  describe('os-theme-change', () => {
-    it('fires when os-window osTheme changes', async () => {
-      sut = mount(OsWindowVue, {});
-
-      const osWindowInstance = sut.get('os-window').element;
-      const supported = customElements.get('os-window').supportedOsThemes;
-      supported.forEach(async (osTheme, index) => {
-        osWindowInstance.osTheme = osTheme;
-        await Vue.nextTick();
-        chai.expect(sut.emitted()['os-theme-change'].length).to.equal(index + 1);
-      });
-    });
-
-    customElements.get('os-window').supportedOsThemes.forEach(async (osTheme) => {
-      it(`fires when osTheme data changes to ${osTheme}`, async () => {
-        sut = mount(OsWindowVue, {
-          propsData: {
-            osTheme: customElements.get('os-window').supportedOsThemes.find((s) => s !== osTheme),
-          },
+  const { supportedOsThemes } = customElements.get('os-window');
+  if (supportedOsThemes.length > 1) {
+    describe('os-theme-change', () => {
+      supportedOsThemes.forEach(async (osTheme) => {
+        it('fires when os-window osTheme changes', async () => {
+          sut = mount(OsWindowVue, {
+            propsData: {
+              osTheme: customElements.get('os-window').supportedOsThemes.find((s) => s !== osTheme),
+            },
+          });
+          const osWindowInstance = sut.get('os-window').element;
+          osWindowInstance.osTheme = osTheme;
+          await Vue.nextTick();
+          chai.expect(sut.emitted()['os-theme-change'].length).to.equal(1);
         });
-        sut.setProps({ osTheme });
+      });
+
+      supportedOsThemes.forEach(async (osTheme) => {
+        it(`fires when osTheme data changes to ${osTheme}`, async () => {
+          sut = mount(OsWindowVue, {
+            propsData: {
+              osTheme: customElements.get('os-window').supportedOsThemes.find((s) => s !== osTheme),
+            },
+          });
+          sut.setProps({ osTheme });
+          await Vue.nextTick();
+          chai.expect(sut.emitted()['os-theme-change'].length).to.equal(1);
+        });
+      });
+
+      it('has correct event details', async () => {
+        sut = mount(OsWindowVue, {});
+
+        sut.setProps({ osTheme: 'win-xp' });
         await Vue.nextTick();
-        chai.expect(sut.emitted()['os-theme-change'].length).to.equal(1);
+        const actualEvent = sut.emitted('os-theme-change').pop().pop();
+        chai.expect(actualEvent).to.have.property('oldOsTheme');
+        chai.expect(actualEvent).to.have.property('newOsTheme');
+        chai.expect(actualEvent.oldOsTheme).to.equal('mac');
+        chai.expect(actualEvent.newOsTheme).to.equal('win-xp');
       });
     });
-
-    it('has correct event details', async () => {
-      sut = mount(OsWindowVue, {});
-
-      sut.setProps({ osTheme: 'win-xp' });
-      await Vue.nextTick();
-      const actualEvent = sut.emitted('os-theme-change').pop().pop();
-      chai.expect(actualEvent).to.have.property('oldOsTheme');
-      chai.expect(actualEvent).to.have.property('newOsTheme');
-      chai.expect(actualEvent.oldOsTheme).to.equal('mac');
-      chai.expect(actualEvent.newOsTheme).to.equal('win-xp');
-    });
-  });
+  }
 
   describe('window-state', () => {
     it('fires when os-window windowState changes', () => {
