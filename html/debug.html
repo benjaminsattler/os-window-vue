@@ -7,13 +7,106 @@
   </head>
   <body>
     <div id="app">
+      <div style="display: flex; flex-wrap: nowrap; margin-bottom: 1rem;">
+        <fieldset style="flex: 1 1 50%;">
+          <legend>Manipulate underlying os-window instance</legend>
+          <div>
+            <label>
+              <input type="checkbox" id="osw-hover">
+              hover?
+            </label>
+          </div>
+          <div>
+            <label>
+              <input type="checkbox" id="osw-interactive">
+              interactive?
+            </label>
+          </div>
+          <div>
+            <label>
+              Os-Theme
+              <select id="osw-os-theme"></select>
+            </label>
+          </div>
+          <div>
+            <label>
+              Theme
+              <select id="osw-theme"></select>
+            </label>
+          </div>
+          <div>
+            <label>
+              Window-State
+              <select id="osw-window-state"></select>
+            </label>
+          </div>
+          <div>
+            <label>
+              Window-Title
+              <input type="text" id="osw-window-title">
+            </label>
+          </div>
+        </fieldset>
+        <fieldset style="flex: 1 1 50%;">
+          <legend>Manipulate os-window-vue</legend>
+          <div>
+            <label>
+              <input type="checkbox" v-model="hover">
+              hover?
+            </label>
+          </div>
+          <div>
+            <label>
+              <input type="checkbox" v-model="interactive">
+              interactive?
+            </label>
+          </div>
+          <div>
+            <label>
+              Os-Theme
+              <select v-model="osTheme">
+                <option v-for="osTheme in availableOsThemes" :key="osTheme" :value="osTheme">{{ osTheme }}</option>
+              </select>
+            </label>
+          </div>
+          <div>
+            <label>
+              Theme
+              <select v-model="theme">
+                <option v-for="theme in availableThemes" :key="theme" :value="theme">{{ theme }}</option>
+              </select>
+            </label>
+          </div>
+          <div>
+            <label>
+              Window-State
+              <select v-model="windowState">
+                <option v-for="windowState in availableWindowStates" :key="windowState" :value="windowState">{{ windowState }}</option>
+              </select>
+            </label>
+          </div>
+          <div>
+            <label>
+              Window-Title
+              <input type="text" v-model="windowTitle">
+            </label>
+          </div>
+          <div>
+        </fieldset>
+      </div>
       <os-window-vue
-        :window-title="windowTitle"
-        :window-state="windowState"
-        :hover="hover ? 'hover' : false"
-        :interactive="interactive ? 'interactive' : false"
-        :theme="theme"
+        :hover="hover"
+        :interactive="interactive"
         :os-theme="osTheme"
+        :theme="theme"
+        :window-state="windowState"
+        :window-title="windowTitle"
+        @hover-change="onHoverChange"
+        @interactive-change="onInteractiveChange"
+        @os-theme-change="onOsThemeChange"
+        @theme-change="onThemeChange"
+        @window-state-change="onWindowStateChange"
+        @window-title-change="onWindowTitleChange"
       >
         <img src="http://www.randomkittengenerator.com/cats/rotator.php">
       </os-window-vue>
@@ -27,15 +120,158 @@
           osWindowVue: window.OsWindowVue,
         },
         data: {
-          windowTitle: 'my window title',
           hover: true,
           interactive: true,
           osTheme: 'mac',
           theme: 'dark',
-          windowState: 'maximized'
+          windowState: 'maximized',
+          windowTitle: 'my window title',
+        },
+        computed: {
+          availableOsThemes() {
+            return customElements.get('os-window').supportedOsThemes;
+          },
+          availableThemes() {
+            return customElements.get('os-window').supportedThemes;
+          },
+          availableWindowStates() {
+            return customElements.get('os-window').supportedWindowStates;
+          },
         },
         el: "#app",
+        methods: {
+          onHoverChange({ oldValue, newValue }) {
+            this.hover = newValue;
+            this.logEvent('hoverChange', ...arguments);
+          },
+          onInteractiveChange({ oldValue, newValue }) {
+            this.interactive = newValue;
+            this.logEvent('interactiveChange', ...arguments);
+          },
+          onOsThemeChange({ oldOsTheme, newOsTheme }) {
+            this.osTheme = newOsTheme;
+            this.logEvent('osThemeChange', ...arguments);
+          },
+          onThemeChange({ oldTheme, newTheme }) {
+            this.theme = newTheme;
+            this.logEvent('themeChange', ...arguments);
+          },
+          onWindowStateChange({ oldWindowState, newWindowState }) {
+            this.windowState = newWindowState;
+            this.logEvent('windowStateChange', ...arguments);
+          },
+          onWindowTitleChange({ oldWindowTitle, newWindowTitle }) {
+            this.windowTitle = newWindowTitle;
+            this.logEvent('windowTitleChange', ...arguments);
+          },
+          logEvent(eventName, event) {
+            console.log('os-window-vue: new event fired', eventName, event);
+          },
+        },
       });
+      const hoverControl = document.querySelector('#osw-hover');
+      const interactiveControl = document.querySelector('#osw-interactive');
+      const osWindowInstance = document.querySelector('#app os-window');
+      const osThemeControl = document.querySelector('#osw-os-theme');
+      const themeControl = document.querySelector('#osw-theme');
+      const windowStateControl = document.querySelector('#osw-window-state');
+      const windowTitleControl = document.querySelector('#osw-window-title');
+      const supportedOsThemes = customElements.get('os-window').supportedOsThemes;
+      const supportedThemes = customElements.get('os-window').supportedThemes;
+      const supportedWindowStates = customElements.get('os-window').supportedWindowStates;
+
+      for (let i = 0; i < supportedOsThemes.length; i += 1) {
+        const newOption = document.createElement('option');
+        newOption.value = newOption.label = supportedOsThemes[i];
+        osThemeControl.add(newOption);
+      }
+      for (let i = 0; i < supportedThemes.length; i += 1) {
+        const newOption = document.createElement('option');
+        newOption.value = newOption.label = supportedThemes[i];
+        themeControl.add(newOption);
+      }
+      for (let i = 0; i < supportedWindowStates.length; i += 1) {
+        const newOption = document.createElement('option');
+        newOption.value = newOption.label = supportedWindowStates[i];
+        windowStateControl.add(newOption);
+      }
+
+      const logEvent = (eventName, event) => {
+        console.log('os-window: new event fired', eventName, event);
+      };
+
+      hoverControl.checked = osWindowInstance.hover;
+      hoverControl.addEventListener('change', function () {
+        osWindowInstance.hover = hoverControl.checked;
+      });
+      osWindowInstance.addEventListener('hoverChange', function (e) {
+        hoverControl.checked = e.detail.newValue;
+        logEvent('hoveChange', ...arguments);
+      });
+
+      interactiveControl.checked = osWindowInstance.interactive;
+      interactiveControl.addEventListener('change', function () {
+        osWindowInstance.interactive = interactiveControl.checked;
+      });
+      osWindowInstance.addEventListener('interactiveChange', function (e) {
+        interactiveControl.checked = e.detail.newValue;
+        logEvent('interactiveChange', ...arguments);
+      });
+
+      osThemeControl.selectedIndex = Array.prototype.findIndex.call(
+        osThemeControl.options,
+        (option) => option.value === osWindowInstance.osTheme
+      );
+      osThemeControl.addEventListener('input', function () {
+        osWindowInstance.osTheme = osThemeControl.options[osThemeControl.selectedIndex].value;
+      });
+      osWindowInstance.addEventListener('osThemeChange', function (e) {
+        osThemeControl.selectedIndex = Array.prototype.findIndex.call(
+          osThemeControl.options,
+          (option) => option.value === e.detail.newOsTheme
+        );
+        logEvent('osThemeChange', ...arguments);
+      });
+
+      themeControl.selectedIndex = Array.prototype.findIndex.call(
+        themeControl.options,
+        (option) => option.value === osWindowInstance.theme
+      );
+      themeControl.addEventListener('input', function () {
+        osWindowInstance.theme = themeControl.options[themeControl.selectedIndex].value;
+      });
+      osWindowInstance.addEventListener('themeChange', function (e) {
+        themeControl.selectedIndex = Array.prototype.findIndex.call(
+          themeControl.options,
+          (option) => option.value === e.detail.newTheme
+        );
+        logEvent('themeChange', ...arguments);
+      });
+
+
+      windowStateControl.selectedIndex = Array.prototype.findIndex.call(
+        windowStateControl.options,
+        (option) => option.value === osWindowInstance.windowState
+      );
+      windowStateControl.addEventListener('input', function () {
+        osWindowInstance.windowState = windowStateControl.options[windowStateControl.selectedIndex].value;
+      });
+      osWindowInstance.addEventListener('windowStateChange', function (e) {
+        windowStateControl.selectedIndex = Array.prototype.findIndex.call(
+          windowStateControl.options,
+          (option) => option.value === e.detail.newWindowState
+        );
+        logEvent('windowStateChange', ...arguments);
+      });
+
+      windowTitleControl.value = osWindowInstance.windowTitle;
+      windowTitleControl.addEventListener('input', function () {
+        osWindowInstance.windowTitle = windowTitleControl.value;
+      });
+      osWindowInstance.addEventListener('windowTitleChange', function (e) {
+        windowTitleControl.value = e.detail.newWindowTitle;
+        logEvent('windowTitleChange', ...arguments);
+      })
     </script>
   </body>
 </html>
