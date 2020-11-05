@@ -47,7 +47,7 @@ jobs:
       run: yarn add os-window@${{ matrix.os-window }}
 
     - name: Lint
-      run: yarn lint --no-fix
+      run: yarn lint
 
     # Runs a single command using the runners shell
     - name: Tests
