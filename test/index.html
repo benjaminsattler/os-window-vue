@@ -34,9 +34,9 @@
     <!-- END Test files -->
 
     <script type="module" class="mocha-exec">
-      mocha.run(() => {
+      mocha.run((failures) => {
         if ('mochaFinished' in window) {
-          mochaFinished();
+          mochaFinished(failures);
         }
       });
     </script>
