@@ -94,23 +94,30 @@
           <div>
         </fieldset>
       </div>
-      <os-window-vue
-        :hover="hover"
-        :interactive="interactive"
-        :os-theme="osTheme"
-        :theme="theme"
-        :window-state="windowState"
-        :window-title="windowTitle"
-        @hover-change="onHoverChange"
-        @interactive-change="onInteractiveChange"
-        @os-theme-change="onOsThemeChange"
-        @theme-change="onThemeChange"
-        @window-state-change="onWindowStateChange"
-        @window-title-change="onWindowTitleChange"
-      >
-        <img src="http://www.randomkittengenerator.com/cats/rotator.php">
-      </os-window-vue>
+      <div style="display: flex; flex-wrap: nowrap; margin-bottom: 1rem;">
+        <div style="flex: 1 1 50%;">
+          <os-window-vue
+            :hover="hover"
+            :interactive="interactive"
+            :os-theme="osTheme"
+            :theme="theme"
+            :window-state="windowState"
+            :window-title="windowTitle"
+            @hover-change="onHoverChange"
+            @interactive-change="onInteractiveChange"
+            @os-theme-change="onOsThemeChange"
+            @theme-change="onThemeChange"
+            @window-state-change="onWindowStateChange"
+            @window-title-change="onWindowTitleChange"
+          >
+            <img src="http://www.randomkittengenerator.com/cats/rotator.php">
+          </os-window-vue>
+        </div>
+        <div id="oswrapp-html" style="margin: 1rem; flex: 1 1 50%; white-space: pre; font-family: monospace"></div>
+      </div>
     </div>
+    <script type="module" src="../node_modules/prettier/standalone.js"></script>
+    <script type="module" src="../node_modules/prettier/parser-html.js"></script>
     <script type="module" src="../node_modules/vue/dist/vue.js"></script>
     <script type="module" src="../node_modules/os-window/main.js"></script>
     <script type="module" src="../browser.js"></script>
@@ -272,6 +279,29 @@
         windowTitleControl.value = e.detail.newWindowTitle;
         logEvent('windowTitleChange', ...arguments);
       })
+
+      document.querySelector('#oswrapp-html').innerText = prettier.format(
+          osWindowInstance.outerHTML,
+          {
+              parser: 'html',
+              plugins: prettierPlugins,
+          }
+      );
+      const observer = new MutationObserver((mutationsList, observer) => {
+          document.querySelector('#oswrapp-html').innerText = prettier.format(
+              osWindowInstance.outerHTML,
+              {
+                  parser: 'html',
+                  plugins: prettierPlugins,
+              }
+          );
+      });
+
+      observer.observe(osWindowInstance, {
+          childList: true,
+          attributes: true,
+          subtree: true,
+      });
     </script>
   </body>
 </html>
