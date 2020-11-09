@@ -36,7 +36,7 @@
     "name": "Benjamin Sattler",
     "email": "bsattler.inbox@gmail.com"
   },
-  "homepage": "https://github.com/benjaminsattler/os-window-vue",
+  "homepage": "https://os-window.benjaminsattler.net",
   "license": "MIT",
   "peerDependencies": {
     "os-window": ">= 0.2.0",
