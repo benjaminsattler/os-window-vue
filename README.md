@@ -47,7 +47,7 @@ You can also directly include the JavaScript module in the browser with the `bro
       <os-window-vue
         window-title="Random Cat Pic"
       >
-        <img src="http://www.randomkittengenerator.com/cats/rotator.php">
+        <img src="https://placekitten.com/250/250">
       </os-window-vue>
     </div>
     <script type="module">
@@ -88,7 +88,7 @@ This example creates a non-interactive window with light macos theme
   <os-window-vue
     :window-title="'Random Cat Pic'"
   >
-    <img src="http://www.randomkittengenerator.com/cats/rotator.php">
+    <img src="https://placekitten.com/250/250">
   </os-window-vue>
 </template>
 
@@ -117,7 +117,7 @@ The next example creates a fully interactive window with dark macos theme
       :window-state="'maximized'"
       :window-title="'Random Cat Pic'"
   >
-    <img src="http://www.randomkittengenerator.com/cats/rotator.php">
+    <img src="https://placekitten.com/250/250">
   </os-window-vue>
 </template>
 
