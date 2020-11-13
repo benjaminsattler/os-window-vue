@@ -26,11 +26,13 @@ Afterwards make sure to also install the required peer dependencies, which will 
 ```
 When all is installed you can start the vue development webserver:
 
+For the next step please make sure to have a working installation of **Python 2.x**. Start the preconfigured python web server to load the development debug HTML page:
+
 ```shell
-> yarn serve
+> yarn dev
 ```
 
-Now you can point your web browser at `http://localhost:8080/` and see the os-window-vue component in action. Changes to the component will be hot reloaded in the browser.
+Now you can point your web browser at `http://localhost:8000/html/debug.html` and see the os-window-vue component in action. It'll not automatically reload, make sure to refresh the page once you saved your changes.
 
 ## Running tests
 

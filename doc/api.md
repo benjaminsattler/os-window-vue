@@ -47,7 +47,7 @@ export default {
     },
     methods: {
         onHoverChange(e) {
-            console.log(`old value was: ${e.oldValue} new theme is: ${e.newValue}`);
+            console.log(`old value was: ${e.oldValue} new value is: ${e.newValue}`);
         }
     }
 }
@@ -95,7 +95,7 @@ export default {
     },
     methods: {
         onInteractiveChange(e) {
-            console.log(`old value was: ${e.oldValue} new theme is: ${e.newValue}`);
+            console.log(`old value was: ${e.oldValue} new value is: ${e.newValue}`);
         }
     }
 }
@@ -143,7 +143,7 @@ export default {
     },
     methods: {
         onWindowStateChange(e) {
-            console.log(`old window state was: ${e.oldWindowState} new theme is: ${e.newWindowState}`);
+            console.log(`old window state was: ${e.oldWindowState} new window state is: ${e.newWindowState}`);
         }
     }
 }
@@ -191,7 +191,7 @@ export default {
     },
     methods: {
         onWindowTitleChange(e) {
-            console.log(`old window title was: ${e.oldWindowTitle} new theme is: ${e.newWindowTitle}`);
+            console.log(`old window title was: ${e.oldWindowTitle} new window title is: ${e.newWindowTitle}`);
         }
     }
 }
