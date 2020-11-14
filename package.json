@@ -39,7 +39,7 @@
   "homepage": "https://os-window.benjaminsattler.net",
   "license": "MIT",
   "peerDependencies": {
-    "os-window": ">= 0.2.0",
+    "os-window": "^0.2.0 || ^0.3.0",
     "vue": "^2.0.0"
   },
   "peerInstallOptions": {
