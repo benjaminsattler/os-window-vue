@@ -1,5 +1,5 @@
 /* eslint-disable import/extensions */
-import OsWindowVue from './lib/OsWindowVue.js';
+import OsWindowVue from './lib/os-window-vue.js';
 
 export function install(Vue) {
   Vue.component('os-window-vue', OsWindowVue);
