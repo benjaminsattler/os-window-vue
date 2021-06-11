@@ -46,11 +46,6 @@
   "peerInstallOptions": {
     "save": false
   },
-  "files": [
-    "lib",
-    "main.js",
-    "browser.js"
-  ],
   "devDependencies": {
     "@vue/cli": "^4.5.13",
     "@vue/cli-plugin-eslint": "~4.5.13",

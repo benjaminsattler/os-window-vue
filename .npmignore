@@ -1,0 +1,5 @@
+/*
+
+!/lib/**/*.js
+!main.js
+!browser.js
