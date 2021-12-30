@@ -1,3 +1,5 @@
+# **DEPRECATION NOTICE:** This repository will no longer receive updates, it has moved to https://github.com/benjaminsattler/os-window-mono/.
+
 # OS-Window Vue Component
 ![CI Status](https://github.com/benjaminsattler/os-window-vue/workflows/CI/badge.svg)
 ![MIT License](https://img.shields.io/github/license/benjaminsattler/os-window-vue)
